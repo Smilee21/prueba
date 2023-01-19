@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title%>
+    </title>
+    <%- include('partials/head')%>
+</head>
+
+<body>
+
+    <%- include('partials/navigation')%>
+
+        <div class="container vh-100 d-flex justify-content-center align-items-center">
+
+
+            <div class="card bg-dark text-white text-center">
+                
+                <div class="card-header">
+                    <h3>Contactame</h3>
+                </div>
+                <div class="card-body text-start">
+                    <form id="formData">
+
+                        <div class="mb-3">
+                            <label for="nombre">nombre</label>
+                            <input id="nombre" type="text" placeholder="Pon Tu Nombre Aqui" class="form-control">
+                        </div>
+
+                         
+                        <div class="mb-3">
+                            <label for="email">email</label>
+                            <input id="email"  type="email" placeholder="Email" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="mensaje">Comentario</label>
+                            <textarea  id="mensaje" rows="3" class="form-control" placeholder="Escribe tu comentario"></textarea>
+                        </div>
+
+                        <Button class="btn btn-primary "> 
+                            Enviar
+                        </Button>
+
+
+
+
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
+        <script src="/js/script.js"></script>
+        
+
+        <%- include('partials/footer')%>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title%>
+    </title>
+    <%- include('partials/head')%>
+</head>
+
+<body>
+ 
+    <%- include('partials/navigation')%>
+        <main class="text-bg-light p-3">
+            <p class="h2 text-center">Curriculum Vitae</p>
+            <dl class="p-5">
+                <!-- Datos personales -->
+                <dt class=" col-sm-3 p-3 h5">Datos personales</dt>
+                <dd class="col-sm-9 p-3">
+                    <li> Nombres y Apellidos: Antonio Miguel Volcan Requena</li>
+                    <li> Cedula: 27.631.348</li>
+                    <li> Residencia: Urb. Santa Isabel Manzana 6</li>
+                    <li> Nacimiento: 4 de Julio 2001 San Juan de los Morros</li>
+                    <li> Edad: 21</li>
+                </dd>
+                <!-- educacion -->
+                <dt class="col-sm-3 p-3 h5">Educacion</dt>
+                <dd class="col-sm-9 p-3">
+                    <li> Primaria: Escuela Básica José Antonio Páez, Laguna de Piedra desde 2007 hasta 2011</li>
+                    <li>Escuela Técnica Agropecuaria, San José de Tiznados desde 2012 hasta 2014</li>
+                    <li>Colegio Madre María "San José de Tiznados", San José de Tiznados desde 2014 hasta 2017</li>
+                </dd>
+                <!-- Experiencia laboral -->
+                <dt class="col-sm-3 p-3 h5 ">Experiencia laboral</dt>
+                <dd class="col-sm-9 p-3">Por los momentos sin ninguna Experiencia</dd>
+                <!-- Habilidades y Destrezas -->
+                <dt class="col-sm-3 p-3 h5">Habilidades y Destrezas</dt>
+                <dd class="col-sm-9 p-3">
+                    <li>Ingles Intermedio</li>
+                    <li>Programacion Basica: JS,HTML,CSS</li>
+                    <li>Determinado</li>
+                </dd>
+
+                </dd>
+            </dl>
+        </main>
+        <style>
+            main{
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-style: oblique;
+            }
+         </style>
+
+
+        <%- include('partials/footer')%>
+
+</body>
+
+
+
+
+</html>
