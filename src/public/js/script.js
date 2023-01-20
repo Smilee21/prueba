@@ -21,7 +21,7 @@ elementosForm.addEventListener("submit", async (event) => {
   let ipReal = respuesta.ip;
   //fetch para obtener el pais
   const p = await fetch(
-    `http://ip-api.com/json/${ipReal}?fields=country`
+    `https://ip-api.com/json/${ipReal}?fields=country`
   ).then((res) => res.json());
   let pais = p.country;
   let elementosForm = {
