@@ -21,7 +21,9 @@ elementosForm.addEventListener("submit", async (event) => {
   let ipReal = respuesta.ip;
   //fetch para obtener el pais
   const p = await fetch(
-    `http://ip-api.com/json/${ipReal}?fields=country`
+    `http://ip-api.com/json/${ipReal}?fields=country`,{
+      referrerPolicy: "unsafe-url"
+    }
   ).then((res) => res.json());
   let pais = p.country;
   let elementosForm = {
