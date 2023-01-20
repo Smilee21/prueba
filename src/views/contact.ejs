@@ -18,7 +18,7 @@
 
       gtag("config", "G-SMX8CHEQTT");
     </script>
-
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld76hMkAAAAAPlZkHd4Rf9gvSeOdB2v1IDIeDR1"></script>
   </head>
 
   <body>
@@ -32,7 +32,7 @@
           <h3>Contactame</h3>
         </div>
         <div class="card-body text-start">
-          <form id="formData">
+          <form name="formulario" id="formData">
             <div class="mb-3">
               <label for="nombre">nombre</label>
               <input
@@ -67,14 +67,34 @@
               ></textarea>
             </div>
 
-            <Button class="btn btn-primary"> Enviar </Button>
+            <div class="mb-3">
+              <input
+                required
+                id="token"
+                type="hidden"
+              />
+            </div>
+
+            <Button class="btn btn-primary" id="btn" disabled> Enviar </Button>
           </form>
         </div>
       </div>
     </div>
 
     <script src="/js/script.js"></script>
-
+    <script>
+      
+      grecaptcha.ready(()=>{
+        grecaptcha.execute('6Ld76hMkAAAAAPlZkHd4Rf9gvSeOdB2v1IDIeDR1',
+        { action: 'formulario' }).then( (token)=>{
+          const itoken = document.getElementById('token');
+          const btn = document.getElementById('btn');
+          itoken.value = token;
+          btn.disabled = false
+        })
+      })
+    
+    </script>
     <%- include('partials/footer')%>
   </body>
 </html>

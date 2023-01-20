@@ -3,7 +3,20 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import indexRoutes from "./routes/index.js";
 import sqlite3 from "sqlite3";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 let sql;
+dotenv.config()
+// create reusable transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: "antomigel23@gmail.com",
+    pass: process.env.MAIL_KEY,
+  },
+});
 
 const app = express();
 
@@ -17,7 +30,7 @@ app.use(indexRoutes);
 
 //Cuando se realiza el post  mediante el fecht
 //este a su vez hace la accion de llevar esos datos a la base de datos de SQLite3
-app.post("/contact", (req, res) => {
+app.post("/contact", async (req, res) => {
   console.log(req.body);
   let elementosForm = req.body;
   let localizacion = elementosForm.pais;
@@ -26,6 +39,21 @@ app.post("/contact", (req, res) => {
   let nombre = elementosForm.nombre;
   let email = elementosForm.email;
   let mensaje = elementosForm.mensaje;
+  
+
+  //send to email
+    await transporter.sendMail({
+    from: '"ANTONIO VOLCAN" <antomigel23@gmail.com>', // sender address
+    to: "antomigel23@dispostable.com",
+    subject: "Hello ✔", // Subject line
+    text: `Se a registrado un nuevo usuario 
+              Nombre: ${nombre}
+              Email: ${email}
+              Pais: ${localizacion}
+              Ip: ${ipjson}
+              Fecha: ${fecha}` // plain text body
+  });
+
   //aqui se insertan los datos en la tabla
   sql =
     "INSERT INTO users (fecha,nombre,email,mensaje,ipjson,localizacion)VALUES (?,?,?,?,?,?)";
