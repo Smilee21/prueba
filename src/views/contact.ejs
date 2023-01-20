@@ -75,26 +75,14 @@
               />
             </div>
 
-            <Button class="btn btn-primary" id="btn" disabled> Enviar </Button>
+            <Button class="btn btn-primary" id="btn"> Enviar </Button>
           </form>
         </div>
       </div>
     </div>
 
     <script src="/js/script.js"></script>
-    <script>
-      
-      grecaptcha.ready(()=>{
-        grecaptcha.execute('6Ld76hMkAAAAAPlZkHd4Rf9gvSeOdB2v1IDIeDR1',
-        { action: 'formulario' }).then( (token)=>{
-          const itoken = document.getElementById('token');
-          const btn = document.getElementById('btn');
-          itoken.value = token;
-          btn.disabled = false
-        })
-      })
-    
-    </script>
+  
     <%- include('partials/footer')%>
   </body>
 </html>

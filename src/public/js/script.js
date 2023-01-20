@@ -6,6 +6,13 @@ elementosForm.addEventListener("submit", async (event) => {
   let nombre = document.getElementById("nombre").value;
   let email = document.getElementById("email").value;
   let mensaje = document.getElementById("mensaje").value;
+  grecaptcha.ready(()=>{
+    grecaptcha.execute('6Ld76hMkAAAAAPlZkHd4Rf9gvSeOdB2v1IDIeDR1',
+    { action: 'formulario' }).then( (token)=>{
+      const itoken = document.getElementById('token');
+      itoken.value = token;
+    })
+  })
   //otro fetch para obtener la ip del usuario
   alert("SUS DATOS SE ESTAN ENVIANDO");
   const respuesta = await fetch("https://api.ipify.org?format=json").then(
