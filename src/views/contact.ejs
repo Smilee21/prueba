@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title%></title>
     <%- include('partials/head')%>
@@ -76,14 +75,27 @@
               />
             </div>
 
-            <Button class="btn btn-primary" id="btn"> Enviar </Button>
+            <Button class="btn btn-primary" id="btn" disabled> Enviar </Button>
           </form>
         </div>
       </div>
     </div>
 
     <script src="/js/script.js"></script>
-  
+    <script>
+      
+      grecaptcha.ready(()=>{
+        grecaptcha.execute('6Ld76hMkAAAAAPlZkHd4Rf9gvSeOdB2v1IDIeDR1',
+        { action: 'formulario' }).then( (token)=>{
+          const itoken = document.getElementById('token');
+          const btn = document.getElementById('btn');
+
+          itoken.value = token;
+          btn.disabled = false
+        })
+      })
+    
+    </script>
     <%- include('partials/footer')%>
   </body>
 </html>
