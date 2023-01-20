@@ -89,7 +89,6 @@
         { action: 'formulario' }).then( (token)=>{
           const itoken = document.getElementById('token');
           const btn = document.getElementById('btn');
-
           itoken.value = token;
           btn.disabled = false
         })
