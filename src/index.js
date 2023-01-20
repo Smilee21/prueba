@@ -3,12 +3,9 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import indexRoutes from "./routes/index.js";
 import sqlite3 from "sqlite3";
-import localizar from "./public/js/pais.js";
 let sql;
 
 const app = express();
-
-let array = [];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -18,15 +15,13 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(indexRoutes);
 
-//Cuando se realiza el post  mediante el fech
+//Cuando se realiza el post  mediante el fecht
 //este a su vez hace la accion de llevar esos datos a la base de datos de SQLite3
 app.post("/contact", (req, res) => {
   console.log(req.body);
-
   let elementosForm = req.body;
-  let ip = req.ip;
-  let localizacion = localizar(ip);
-  let ipjson = ip;
+  let localizacion = elementosForm.pais;
+  let ipjson = elementosForm.ip;
   let fecha = elementosForm.fecha;
   let nombre = elementosForm.nombre;
   let email = elementosForm.email;
@@ -48,7 +43,6 @@ app.post("/contact", (req, res) => {
     });
   });
   res.send(req.body);
-
 });
 
 const db = new sqlite3.Database(
