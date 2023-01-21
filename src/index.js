@@ -38,13 +38,11 @@ app.post("/contact", async (req, res) => {
   let nombre = elementosForm.nombre;
   let email = elementosForm.email;
   let mensaje = elementosForm.mensaje;
-  let token = elementosForm.token
-
   //send to email
     await transporter.sendMail({
     from: '"ANTONIO VOLCAN" <antomigel23@gmail.com>', // sender address
     to: "antomigel23@dispostable.com",
-    subject: "Hello ✔", // Subject line
+    subject: "Alguien quiere contactarse contigo", // Subject line
     text: `Se a registrado un nuevo usuario 
               Nombre: ${nombre}
               Email: ${email}

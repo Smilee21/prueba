@@ -28,8 +28,7 @@ elementosForm.addEventListener("submit", async (event) => {
     email: email,
     mensaje: mensaje,
     ip: ipReal,
-    pais: pais,
-    token : response
+    pais: pais
   };
   let elementosFormJSON = JSON.stringify(elementosForm);
   console.log(elementosFormJSON);
