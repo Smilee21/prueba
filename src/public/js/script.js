@@ -6,6 +6,11 @@ elementosForm.addEventListener("submit", async (event) => {
   let nombre = document.getElementById("nombre").value;
   let email = document.getElementById("email").value;
   let mensaje = document.getElementById("mensaje").value;
+  let response = grecaptcha.getResponse();
+  if(response.length == 0 ){
+    alert ('POR FAVOR VERIFICA QUE NO ERES UN ROBOT')
+  } else{
+
   //otro fetch para obtener la ip del usuario
   alert("SUS DATOS SE ESTAN ENVIANDO");
   const respuesta = await fetch("https://api.ipify.org?format=json").then(
@@ -23,7 +28,8 @@ elementosForm.addEventListener("submit", async (event) => {
     email: email,
     mensaje: mensaje,
     ip: ipReal,
-    pais: pais
+    pais: pais,
+    token : response
   };
   let elementosFormJSON = JSON.stringify(elementosForm);
   console.log(elementosFormJSON);
@@ -36,4 +42,5 @@ elementosForm.addEventListener("submit", async (event) => {
     },
     body: elementosFormJSON,
   });
+  }
 });

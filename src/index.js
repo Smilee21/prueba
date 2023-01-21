@@ -31,7 +31,6 @@ app.use(indexRoutes);
 //Cuando se realiza el post  mediante el fecht
 //este a su vez hace la accion de llevar esos datos a la base de datos de SQLite3
 app.post("/contact", async (req, res) => {
-  console.log(req.body);
   let elementosForm = req.body;
   let localizacion = elementosForm.pais;
   let ipjson = elementosForm.ip;
@@ -39,7 +38,7 @@ app.post("/contact", async (req, res) => {
   let nombre = elementosForm.nombre;
   let email = elementosForm.email;
   let mensaje = elementosForm.mensaje;
-  
+  let token = elementosForm.token
 
   //send to email
     await transporter.sendMail({
@@ -51,7 +50,9 @@ app.post("/contact", async (req, res) => {
               Email: ${email}
               Pais: ${localizacion}
               Ip: ${ipjson}
-              Fecha: ${fecha}` // plain text body
+              Fecha: ${fecha}
+              Mensaje del usuario: ${mensaje}`
+              
   });
 
   //aqui se insertan los datos en la tabla

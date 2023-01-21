@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title%></title>
     <%- include('partials/head')%>
-    
+
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SMX8CHEQTT"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SMX8CHEQTT"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -18,7 +21,7 @@
 
       gtag("config", "G-SMX8CHEQTT");
     </script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Ld76hMkAAAAAPlZkHd4Rf9gvSeOdB2v1IDIeDR1"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
 
   <body>
@@ -34,7 +37,7 @@
         <div class="card-body text-start">
           <form name="formulario" id="formData">
             <div class="mb-3">
-              <label for="nombre">nombre</label>
+              <label for="nombre">Nombre</label>
               <input
                 required
                 id="nombre"
@@ -45,7 +48,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="email">email</label>
+              <label for="email">Email</label>
               <input
                 required
                 id="email"
@@ -66,35 +69,17 @@
                 placeholder="Escribe tu comentario"
               ></textarea>
             </div>
+            <div class="g-recaptcha" data-sitekey="6LcxIBUkAAAAALlYF2cBsgCPW6O29JPMOi3G8TuM" ></div>
+            <br />
+            <input class="btn btn-primary" type="submit" value="Submit" />
 
-            <div class="mb-3">
-              <input
-                required
-                id="token"
-                type="hidden"
-              />
-            </div>
-
-            <Button class="btn btn-primary" id="btn" disabled> Enviar </Button>
+            <!-- <Button class="btn btn-primary" id="btn" disabled> Enviar </Button> -->
           </form>
         </div>
       </div>
     </div>
-
+    <script></script>
     <script src="/js/script.js"></script>
-    <script>
-      
-      grecaptcha.ready(()=>{
-        grecaptcha.execute('6Ld76hMkAAAAAPlZkHd4Rf9gvSeOdB2v1IDIeDR1',
-        { action: 'formulario' }).then( (token)=>{
-          const itoken = document.getElementById('token');
-          const btn = document.getElementById('btn');
-          itoken.value = token;
-          btn.disabled = false
-        })
-      })
-    
-    </script>
     <%- include('partials/footer')%>
   </body>
 </html>
